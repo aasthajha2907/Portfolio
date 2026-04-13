@@ -1676,6 +1676,173 @@ document.querySelectorAll('.project-imgs img, .proof-card img, .recs-grid img').
 });
 
 </script>
+
+<style>
+@media (max-width: 768px) {
+  /* Kill ALL multi-column layouts */
+  .cover,
+  .origin,
+  .stats-grid,
+  .project,
+  .proof-grid,
+  .quotes-grid,
+  .recs-grid,
+  .skills-categories,
+  .campaign-body,
+  .territories,
+  .section-header {
+    display: block !important;
+    grid-template-columns: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Full width everything */
+  body, html {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  section, div, p, h1, h2, h3 {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Cover */
+  .cover { min-height: auto !important; }
+  .cover-left {
+    width: 100% !important;
+    padding: 5rem 1.25rem 2rem !important;
+  }
+  .cover-right {
+    width: 100% !important;
+    height: 56vw !important;
+    min-height: 220px !important;
+  }
+  .cover-right::after {
+    font-size: 1.2rem !important;
+    letter-spacing: 0.05em !important;
+  }
+  .cover-name { font-size: min(16vw, 3.8rem) !important; }
+  .cover-tagline { font-size: 1rem !important; max-width: 100% !important; }
+  .cover-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem 1.5rem !important;
+  }
+  .cover-strip { display: none !important; }
+
+  /* Stats */
+  .stats-block { padding: 2.5rem 1.25rem !important; }
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .stat-cell { padding: 1rem 0.5rem !important; }
+  .stat-num { font-size: min(9vw, 2.5rem) !important; }
+  .stat-label { font-size: 0.45rem !important; letter-spacing: 0.06em !important; }
+
+  /* Section header */
+  .section-header {
+    display: flex !important;
+    padding: 2rem 1.25rem 1.25rem !important;
+    gap: 0.75rem !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+  }
+  .section-num { font-size: 2.5rem !important; }
+  .section-title { font-size: min(7vw, 1.8rem) !important; }
+  .section-sub { display: none !important; }
+
+  /* Origin */
+  .origin {
+    padding: 2.5rem 1.25rem !important;
+    gap: 0 !important;
+  }
+  .origin-label { margin-bottom: 0.5rem !important; }
+  .origin-divider { display: none !important; }
+  .origin-headline { font-size: min(9vw, 2.2rem) !important; }
+  .origin-deck { font-size: 1rem !important; }
+  .origin-body { column-count: 1 !important; font-size: 0.82rem !important; }
+  .origin-pullquote { font-size: 1rem !important; }
+
+  /* Spread / projects */
+  .spread { padding: 1.25rem !important; gap: 2.5rem !important; }
+  .project {
+    padding-bottom: 2.5rem !important;
+    gap: 1.25rem !important;
+  }
+  .project:nth-child(even) { direction: ltr !important; }
+  .project-meta { padding: 0 !important; }
+  .project-num { font-size: 3rem !important; margin-bottom: -0.75rem !important; }
+  .project-tag { font-size: 0.52rem !important; white-space: normal !important; }
+  .project-title { font-size: min(6vw, 1.5rem) !important; }
+  .project-body { font-size: 0.8rem !important; }
+  .project-imgs { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
+  .project-imgs.grid-3 { grid-template-columns: 1fr 1fr !important; }
+  .project-imgs img { width: 100% !important; height: auto !important; }
+
+  /* Proof */
+  .proof-section { padding: 2.5rem 1.25rem !important; }
+  .proof-intro { font-size: 0.95rem !important; }
+  .proof-card { margin-bottom: 1rem !important; }
+
+  /* Quotes */
+  .quotes-section { padding: 2.5rem 1.25rem !important; }
+  .quotes-title { font-size: min(13vw, 3rem) !important; margin-bottom: 1.5rem !important; }
+  .quote-block { padding: 1.5rem 1.25rem !important; margin-bottom: 0 !important; }
+  .quote-mark { font-size: 3rem !important; }
+  .quote-text { font-size: 0.95rem !important; }
+  .recs-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+  }
+
+  /* Skills */
+  .skills-section { padding: 2.5rem 1.25rem !important; }
+  .skills-header { font-size: min(14vw, 3.5rem) !important; margin-bottom: 2rem !important; }
+  .skill-cat-label { margin-top: 1.5rem !important; }
+
+  /* Campaign */
+  .campaign-section { padding: 2.5rem 1.25rem !important; }
+  .campaign-headline { font-size: min(9vw, 2.2rem) !important; }
+  .campaign-subhead { font-size: 0.9rem !important; }
+  .campaign-insight, .campaign-headlines-list { width: 100% !important; }
+  .territories {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .territory { padding: 1rem !important; }
+  .territory-num { font-size: 1.8rem !important; }
+
+  /* Campaign samples */
+  .campaign-section [style*="grid-template-columns:repeat(3"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  .campaign-section [style*="grid-template-columns:1fr 1fr"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact */
+  .contact-section { padding: 4rem 1.25rem !important; }
+  .contact-headline { font-size: min(10vw, 3rem) !important; }
+  .contact-email { font-size: min(4vw, 1.1rem) !important; }
+  .contact-links { flex-direction: column !important; gap: 0.75rem !important; }
+
+  /* Footer */
+  footer {
+    padding: 1.25rem !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+  }
+}
+</style>
+
 </body>
 </html>
 <!-- MOBILE PATCH -->
