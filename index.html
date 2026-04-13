@@ -1815,4 +1815,89 @@ document.querySelectorAll('.project-imgs img, .proof-card img, .recs-grid img').
   .territories { grid-template-columns: 1fr; }
   .quotes-title { font-size: clamp(2rem, 14vw, 3.5rem); }
 }
+
+/* ── MOBILE OVERFLOW FIX ── */
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; max-width: 100vw; }
+
+  * { max-width: 100%; }
+
+  /* Fix monospace overflow */
+  .project-body, .origin-body p, .proof-card-caption,
+  .campaign-insight p, .territory-body, .quote-text,
+  .cover-tagline {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* Project section — full width, no bleed */
+  .spread { padding: 1.5rem; }
+  .project { 
+    grid-template-columns: 1fr;
+    padding-left: 0; padding-right: 0;
+    overflow: hidden;
+  }
+  .project-meta { padding: 0; }
+  .project-tag {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 0.55rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+  }
+  .project-title { 
+    font-size: clamp(1.3rem, 6vw, 1.8rem); 
+    word-break: break-word;
+  }
+
+  /* Section header fix */
+  .section-header {
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+  .section-title { word-break: break-word; }
+
+  /* Stats cells */
+  .stat-cell { 
+    padding: 1rem 0.5rem; 
+    overflow: hidden;
+  }
+  .stat-label { 
+    font-size: 0.48rem; 
+    letter-spacing: 0.08em;
+  }
+
+  /* Cover meta overflow */
+  .cover-meta { 
+    overflow: hidden;
+    gap: 1rem;
+  }
+
+  /* Proof grid */
+  .proof-card-header span {
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Campaign section */
+  .campaign-section { overflow: hidden; }
+  .campaign-inner { overflow: hidden; }
+  .campaign-headlines-list, .campaign-insight { overflow: hidden; }
+
+  /* Image grids — force single col on very small */
+  .project-imgs { overflow: hidden; }
+  .project-imgs img { max-width: 100%; height: auto; }
+}
+
+@media (max-width: 480px) {
+  .project-imgs.grid-2,
+  .project-imgs.grid-3 { grid-template-columns: 1fr; }
+  .recs-grid { grid-template-columns: 1fr; }
+}
+
 </style>
