@@ -107,7 +107,7 @@ nav {
 .cover-left {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 6rem 3rem 4rem;
   position: relative;
   z-index: 2;
@@ -120,8 +120,15 @@ nav {
   color: var(--grey);
   margin-bottom: 2rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+.issue-tag .issue-year {
+  white-space: nowrap;
+}
+.issue-tag .issue-title {
+  white-space: nowrap;
 }
 .issue-tag::before {
   content: '';
@@ -230,6 +237,7 @@ nav {
   position: absolute;
   bottom: 2.5rem;
   left: 3rem;
+  display: none;
   font-size: 0.58rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1149,7 +1157,7 @@ footer .f-copy {
 <!-- COVER -->
 <section class="cover">
   <div class="cover-left">
-    <div class="issue-tag">Portfolio 2026 — Marketing & Brand Strategy</div>
+    <div class="issue-tag"><span class="issue-year">Portfolio 2026</span><span class="issue-title">— Marketing & Brand Strategy</span></div>
     <h1 class="cover-name">
       Hi, I'm <em style="font-family:'Playfair Display',serif; font-style:italic; color:var(--red);">Aastha.</em><br>
       I make brands<br>
@@ -2334,6 +2342,68 @@ document.querySelectorAll('.project-imgs img, .proof-card img, .recs-grid img').
   .project-imgs.grid-2,
   .project-imgs.grid-3 { grid-template-columns: 1fr; }
   .recs-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── LAPTOP / MEDIUM SCREEN FIX ── */
+@media (max-width: 1280px) and (min-width: 769px) {
+  .cover {
+    min-height: 100vh;
+    height: auto;
+  }
+  .cover-left {
+    justify-content: center;
+    padding: 5rem 2.5rem 3rem;
+  }
+  .cover-name {
+    font-size: clamp(3rem, 8vw, 6rem);
+  }
+  .cover-tagline {
+    font-size: 1rem;
+    max-width: 420px;
+  }
+}
+
+/* ── BRAND SECTION MOBILE ── */
+@media (max-width: 768px) {
+  #brand .campaign-inner > div[style*="grid-template-columns:repeat(4"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+  }
+  #brand .campaign-inner > div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  #brand .campaign-inner > div[style*="grid-template-columns:1fr 1fr"],
+  #brand .campaign-inner > div[style*="grid-template-columns: 1fr 1fr"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  #brand .campaign-inner div[style*="grid-template-columns:repeat(4,1fr)"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  #brand h2 {
+    font-size: clamp(2.5rem, 12vw, 5rem) !important;
+    line-height: 1 !important;
+  }
+  #brand .campaign-inner {
+    padding: 0 1.25rem !important;
+  }
+  #brand [style*="border-left:3px solid #8B5E2A; padding-left:2rem"] {
+    border-left: none !important;
+    border-top: 3px solid #8B5E2A !important;
+    padding-left: 0 !important;
+    padding-top: 1.5rem !important;
+    margin-top: 1.5rem !important;
+  }
+  #brand [style*="height:200px"] {
+    height: 130px !important;
+  }
+  #brand [style*="grid-column:1/3"] {
+    grid-column: 1/3 !important;
+  }
 }
 
 </style>
