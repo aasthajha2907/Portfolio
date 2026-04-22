@@ -97,11 +97,11 @@ nav {
    COVER — FULL SCREEN EDITORIAL
 ═══════════════════════════════ */
 .cover {
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  overflow: hidden;
 }
 
 .cover-left {
@@ -114,21 +114,17 @@ nav {
 }
 
 .issue-tag {
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--grey);
   margin-bottom: 2rem;
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.issue-tag .issue-year {
+  align-items: center;
+  gap: 0.75rem;
   white-space: nowrap;
-}
-.issue-tag .issue-title {
-  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .issue-tag::before {
   content: '';
@@ -181,6 +177,7 @@ nav {
 .cover-right {
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .cover-right img {
@@ -1157,7 +1154,7 @@ footer .f-copy {
 <!-- COVER -->
 <section class="cover">
   <div class="cover-left">
-    <div class="issue-tag"><span class="issue-year">Portfolio 2026</span><span class="issue-title">— Marketing & Brand Strategy</span></div>
+    <div class="issue-tag">Portfolio 2026 &nbsp;·&nbsp; Marketing &amp; Brand Strategy</div>
     <h1 class="cover-name">
       Hi, I'm <em style="font-family:'Playfair Display',serif; font-style:italic; color:var(--red);">Aastha.</em><br>
       I make brands<br>
@@ -2346,21 +2343,24 @@ document.querySelectorAll('.project-imgs img, .proof-card img, .recs-grid img').
 
 
 /* ── LAPTOP / MEDIUM SCREEN FIX ── */
-@media (max-width: 1280px) and (min-width: 769px) {
-  .cover {
-    min-height: 100vh;
-    height: auto;
+@media (max-width: 1400px) and (min-width: 769px) {
+  .cover-name {
+    font-size: clamp(2.5rem, 7vw, 6rem) !important;
+    line-height: 0.92 !important;
   }
   .cover-left {
-    justify-content: center;
-    padding: 5rem 2.5rem 3rem;
-  }
-  .cover-name {
-    font-size: clamp(3rem, 8vw, 6rem);
+    padding: 4.5rem 2.5rem 3rem !important;
+    justify-content: center !important;
   }
   .cover-tagline {
-    font-size: 1rem;
-    max-width: 420px;
+    font-size: 0.95rem !important;
+    max-width: 400px !important;
+  }
+  .cover-meta {
+    gap: 1.25rem !important;
+  }
+  .cover-meta strong {
+    font-size: 1.1rem !important;
   }
 }
 
