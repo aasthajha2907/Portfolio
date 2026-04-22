@@ -1930,6 +1930,104 @@ window.addEventListener('scroll', () => {
   }
 });
 
+
+// Mobile brand section grid fix
+function fixBrandMobile() {
+  if (window.innerWidth > 768) return;
+  
+  var brand = document.getElementById('brand');
+  if (!brand) return;
+  
+  // Fix ALL grids inside brand section
+  brand.querySelectorAll('[style]').forEach(function(el) {
+    var s = el.getAttribute('style') || '';
+    
+    // Moodboard: 4-col grid with fixed row heights
+    if (s.includes('grid-template-columns:repeat(4') || s.includes('grid-template-columns: repeat(4')) {
+      el.style.gridTemplateColumns = '1fr 1fr';
+      el.style.gridTemplateRows = 'auto';
+    }
+    
+    // USPs: repeat(4,1fr)
+    if (s.includes('grid-template-columns:repeat(4,1fr)') || s.includes('repeat(4, 1fr)')) {
+      el.style.gridTemplateColumns = '1fr';
+    }
+    
+    // 3-col social mockups
+    if (s.includes('grid-template-columns:repeat(3,1fr)') || s.includes('repeat(3, 1fr)') || s.includes('repeat(3,1fr)')) {
+      el.style.gridTemplateColumns = '1fr';
+    }
+    
+    // 2-col layouts inside brand
+    if ((s.includes('grid-template-columns:1fr 1fr') || s.includes('grid-template-columns: 1fr 1fr')) && el.closest('#brand')) {
+      el.style.gridTemplateColumns = '1fr';
+      el.style.display = 'grid';
+    }
+    
+    // 3-col taglines
+    if (s.includes('grid-template-columns:1fr 1fr 1fr') || s.includes('1fr 1fr 1fr')) {
+      if (el.closest('#brand')) {
+        el.style.gridTemplateColumns = '1fr';
+      }
+    }
+    
+    // Fix moodboard tile heights — remove fixed heights
+    if (s.includes('height:200px') || s.includes('height: 200px')) {
+      el.style.height = 'auto';
+      el.style.minHeight = '120px';
+    }
+    
+    // Fix grid-column spans that break 2-col moodboard
+    if (s.includes('grid-column:1/3') || s.includes('grid-column: 1 / 3') || s.includes('grid-column:1 / 3')) {
+      el.style.gridColumn = '1 / 3';
+    }
+    
+    // Brand identity 2-col (logo + voice)
+    if (s.includes('gap:3rem') && s.includes('1fr 1fr') && el.closest('#brand')) {
+      el.style.gridTemplateColumns = '1fr';
+      el.style.gap = '2rem';
+    }
+    
+    // Concept section 2-col
+    if (s.includes('gap:4rem') && el.closest('#brand')) {
+      el.style.display = 'block';
+    }
+    
+    // "Why it works" border fix
+    if (s.includes('border-left:3px solid #8B5E2A') || s.includes('border-left: 3px solid #8B5E2A')) {
+      el.style.borderLeft = 'none';
+      el.style.borderTop = '3px solid #8B5E2A';
+      el.style.paddingLeft = '0';
+      el.style.paddingTop = '1.5rem';
+      el.style.marginTop = '1.5rem';
+    }
+    
+    // Collabs on-radar pills
+    if (s.includes('flex-wrap:wrap') && el.closest('#brand')) {
+      el.style.flexDirection = 'column';
+      el.style.alignItems = 'flex-start';
+    }
+  });
+  
+  // Fix campaign-inner padding
+  var inner = brand.querySelector('.campaign-inner');
+  if (inner) {
+    inner.style.padding = '0 1.25rem';
+  }
+  
+  // Fix brand h2 font size
+  var h2 = brand.querySelector('h2');
+  if (h2) {
+    h2.style.fontSize = 'clamp(2.5rem, 12vw, 4rem)';
+    h2.style.lineHeight = '1';
+  }
+}
+
+// Run on load and resize
+fixBrandMobile();
+window.addEventListener('resize', fixBrandMobile);
+
+
 // Lightbox
 function openLightbox(src, alt) {
   document.getElementById('lightbox-img').src = src;
